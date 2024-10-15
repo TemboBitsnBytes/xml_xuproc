@@ -1,0 +1,48 @@
+NAME
+    xuproc.py - Process JUnit XML files by updating test case attributes or print test statistics.
+
+SYNOPSIS
+    python3 xuproc.py [options] [file]
+
+DESCRIPTION
+    xuproc.py processes JUnit XML files to either update the test case 'name' attributes
+    by concatenating the 'classname' and 'name' attributes, or it prints the statistics
+    about total tests, failures, errors, and skipped tests in the XML file.
+
+OPTIONS
+    -h
+        Display this help message and exit.
+
+    -j
+        Update each test case in the XML file by concatenating the 'classname' and 'name'
+        attributes in the following format:
+        classname.name
+        Subsequent runs will not duplicate the classname if it's already present in the name.
+
+ARGUMENTS
+    file
+        Path to the JUnit XML file to process.
+
+EXAMPLES
+    Print test statistics for a JUnit XML file:
+        python3 xuproc.py tests.xml
+
+    Update the 'name' attribute of test cases with the 'classname':
+        python3 xuproc.py -j tests.xml
+
+EXIT STATUS
+    0   Successful completion.
+    1   An error occurred (file not found, XML parsing error, etc).
+    
+
+Key Features:
+
+         XML Parsing: The script uses Python’s xml.etree.ElementTree module to process the XML.
+         Concatenation Handling: Ensures that the classname is concatenated only once to the name 
+         attribute, even if the script is run multiple times on the same file.
+         Statistics Reporting: Outputs test statistics such as total tests, failures, errors, and skipped tests.
+
+Known Limitations (WARNING)
+
+         The script modifies the XML file in place. If you need to preserve the original file, 
+         make a copy before running the -j option.
