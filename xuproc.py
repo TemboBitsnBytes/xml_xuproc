@@ -4,13 +4,13 @@ import os
 
 
 def load_xml(file):
-    """
+    '''
     load and parse xml file
     Args:
         file (str): full or relative path to file
     returns:
         parsed xml root element
-    """
+    '''
     if not os.path.exists(file):
         print(f"Error: The file {file} doesn't exist. Please check path and file name")
         sys.exit(1)
